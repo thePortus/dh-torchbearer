@@ -1,0 +1,60 @@
+/**
+ * Main/Loading
+ */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: robotoRegular;
+}
+
+.dhLoading {
+  font-size: 4.0em;
+  color: #004444;
+  font-variant: small-caps;
+  opacity: 0.7;
+}
+
+/**
+ * General Use
+ */
+.gap {
+  padding: 10px;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.smallInput {
+  width: 15;
+  text-align: center;
+}
+
+.dhDisabled {
+  opacity: 0.5;
+}
+
+/**
+ * Icon Colors
+ */
+.dhGreen {
+  color: #63D457;
+}
+
+.dhYellow {
+  color: #FFCC66;
+}
+
+.dhRed {
+  color: #E39A9A;
+}

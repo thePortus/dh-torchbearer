@@ -1,0 +1,91 @@
+/**
+ * Tables & Forms
+ */
+
+
+/**
+ * dhTable
+ */
+.dhTable {
+  display: table;
+  width: 100%;
+  border-color: #444444;
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+}
+
+.dhTable > .tHead {
+  display: table-header-group;
+}
+
+.dhTable > .tFoot {
+  display: table-footer-group;
+}
+
+.dhTable > .tHead > .tRow,
+.dhTable > .tFoot > .tRow {
+  display: table-row;
+  background-color: #666666;
+}
+
+.dhTable > .tHead > .tRow > .tCell,
+.dhTable > .tFoot > .tRow > .tCell {
+  display: table-cell;
+  padding: 2px 5px 2px 5px;
+  vertical-align: middle;
+  color: #DDDDDD;
+}
+
+.dhTable > .tHead > .tRow > .tCell .colLabel,
+.dhTable > .tFoot > .tRow > .tCell .colLabel {
+  font-variant: small-caps;
+  font-weight: bold;
+}
+
+.dhTable > .tHead > .tRow > .tCell .colBtn,
+.dhTable > .tFoot > .tRow > .tCell .colBtn {
+  font-size: 0.9em;
+  padding: 5px;
+}
+
+.dhTable > .tBody {
+  display: table-row-group;
+  border-color: #444444;
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+}
+
+.dhTable > .tBody > .tRow {
+  display: table-row;
+}
+
+.dhTable > .tBody > .tRow:nth-child(even) {
+  background-color: #EAEAEA;
+}
+
+.dhTable > .tBody > .tRow:hover {
+  background-color: #EAFFEA;
+}
+
+.dhTable > .tBody > .tRow > .tCell {
+  display: table-cell;
+  padding: 2px 5px 2px 5px;
+  vertical-align: middle;
+}
+
+/**
+ * dhForm
+ */
+.dhForm {
+  border-color: #444444;
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+}
+
+.dhForm .formHead {
+  text-align: center;
+  font-variant: small-caps;
+  font-weight: bold;
+  background-color: #666666;
+  color: #DDDDDD;
+}

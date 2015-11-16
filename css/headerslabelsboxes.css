@@ -1,0 +1,89 @@
+/**
+ * Headers & Toolbars
+ */
+.dhHeader {
+  font-family: oswaldRegular;
+}
+
+.dhHeader .mainTitle {
+  font-size: 1.7em;
+  color: #FFEEDD;
+  font-variant: small-caps;
+}
+
+.dhHeader .subTitle {
+  font-size: 0.95em;
+  font-family: oswaldLight;
+}
+
+.dhHeader .credits {
+  font-size: 0.8em;
+  opacity: 0.7;
+  font-family: oswaldLight;
+}
+
+.dhHeader .mainNav {
+  font-size: 1.0em;
+}
+
+.dhToolbar {
+  font-family: oswaldBold;
+  font-variant: small-caps;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.header1 {
+  font-size: 1.5em;
+}
+
+.header2 {
+  font-size: 1.2em;
+}
+
+/**
+ * Textboxes
+ */
+.dhTextBox {
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+  border-color: #AAAAAA;
+  padding: 5px;
+  margin: 15px 0 15px 0;
+}
+
+.dhTextBox .dhLabel {
+  top: -15px;
+  left: 5px;
+  position: relative;
+  background-color: #FFFFFF;
+  padding: 5px;
+  border-color: #AAAAAA;
+  border-width: 1px 1px 1px 1px;
+  border-style: dashed;
+  font-variant: small-caps;
+}
+
+.dhTextBox .dhContent {
+  padding: 3px 10px 3px 10px;
+}
+
+/**
+ * Standalone Labels
+ */
+.lightLabel {
+  font-size: .9em;
+  opacity: 0.8;
+  color: #EEEEEE;
+  background-color: #666666;
+  border-width: 1px 0 1px 0;
+  border-style: solid;
+  border-color: #444444;
+  padding: 5px;
+  margin: 10px 0 10px 0;
+}
+
+.dhFieldLabel {
+  opacity: 0.3;
+  font-weight: 700;
+}
