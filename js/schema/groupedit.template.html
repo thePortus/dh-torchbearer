@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<div layout-padding layout-fill>
+  <form name="editGroup" ng-if="!vm.viewOptionsFlag" class="dhForm">
+    <div class="formHead">
+      Edit {{vm.editTable.label}}
+    </div>
+    <div layout="column" layout-padding>
+      <md-input-container>
+        <label>ID</label>
+        <input ng-model="vm.editGroup.id" aria-label="Edit Group ID" required>
+      </md-input-container>
+      <md-input-container>
+        <label>Label</label>
+        <input ng-model="vm.editGroup.label" aria-label="Edit Group Label" required>
+      </md-input-container>
+      <div layout="row" layout-align="center center">
+        <div layout="column" layout-align="center center" flex>
+          <md-icon ng-click="vm.remove()" md-font-library="material-icons" class="dhRed">delete</md-icon>
+          <span ng-click="vm.remove()">Delete</span>
+        </div>
+        <div layout="row" layout-align="center center" flex>
+          <span ng-if="vm.groups[vm.index(vm.group)].order!==0" ng-click="vm.groups.moveUp(vm.group)">
+            <md-icon md-font-library="material-icons">arrow_drop_up</md-icon>
+            Move Up
+          </span>
+          <span ng-if="vm.groups[vm.index(vm.group)].order<=0" class="dhDisabled">
+            <md-icon md-font-library="material-icons">arrow_drop_up</md-icon>
+            Move Up
+          </span>
+          <span ng-if="vm.groups[vm.index(vm.group)].order<vm.groups.count()-1" ng-click="vm.groups.moveDown(vm.group)">
+            <md-icon md-font-library="material-icons">arrow_drop_down</md-icon>
+            Move Down
+          </span>
+          <span ng-if="vm.groups[vm.index(vm.group)].order>=vm.groups.count()-1" class="dhDisabled">
+            <md-icon md-font-library="material-icons">arrow_drop_down</md-icon>
+            Move Down
+          </span>
+        </div>
+      </div>
+
+    </div>
+    <div layout="column">
+      <md-button ng-click="vm.update()" class="md-primary center" aria-label="Submit New Table">
+        <md-icon md-font-library="material-icons">done</md-icon>
+        Submit Changes
+      </md-button>
+    </div>
+  </form>
+  
+    <div class="gap"></div>
+
+  <div layout="column">
+    <md-button ng-if="!vm.viewOptionsFlag" ng-click="vm.viewOptionsFlag=!vm.viewOptionsFlag" aria-label="View Group Options">View Options in Group</md-button>
+    <md-button ng-if="vm.viewOptionsFlag" ng-click="vm.viewOptionsFlag=!vm.viewOptionsFlag" aria-label="Hide Group Options">Hide Options in Group</md-button>
+  </div>
+  
+  <div class="gap"></div>
+
+  <div ng-if="vm.viewOptionsFlag">
+    <md-toolbar class="dhToolbar">
+      <div class="header2" layout-padding>
+        Options in '{{vm.editGroup.label}}'
+      </div>
+    </md-toolbar>
+    <dh-option-add group="vm.group" schema="vm.schema"></dh-option-add>
+    <md-tabs md-dynamic-height md-border-bottom md-center-tabs flex>
+      <md-tab ng-repeat="option in vm.options  | orderObjectBy:'order'" label="{{option.label}}">
+        <dh-option-edit group="vm.group" option="option.id" schema="vm.schema"></dh-option-edit>
+      </md-tab>
+    </md-tabs>
+  </div>
+</div>

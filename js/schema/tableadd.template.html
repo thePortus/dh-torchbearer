@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<div layout-padding layout-fill>
+
+  <div layout="column">
+    <md-button ng-if="!vm.addFlag" ng-click="vm.addFlag=!vm.addFlag">
+      <md-icon md-font-library="material-icons">add_circle</md-icon>
+      Add Table
+    </md-button>
+    <md-button ng-if="vm.addFlag" ng-click="vm.addFlag=!vm.addFlag">
+      <md-icon md-font-library="material-icons">cancel</md-icon>
+      Cancel Add Field
+    </md-button>
+  </div>
+
+  <div class="gap"></div>
+
+  <form ng-if="vm.addFlag" name="addTable" class="dhForm" novalidate>
+    <div class="formHead">
+      Add a New Table
+    </div>
+    <div layout="column" layout-padding>
+      <md-input-container>
+        <label>ID</label>
+        <input name="id" ng-model="vm.newTable.id" aria-label="New Table ID" required>
+        <div ng-show="addTable.id.$invalid" ng-messages="addTable.id.$error">
+          <div ng-message="required">ID field is required</div>
+        </div>
+      </md-input-container>
+      <md-input-container>
+        <label>Label</label>
+        <input ng-model="vm.newTable.label" aria-label="New Table Label">
+      </md-input-container>
+      <md-button type="submit" ng-disabled="addTable.$invalid" value="submit" ng-click="vm.create()" class="md-primary center" aria-label="Submit New Table">
+        Create New Table
+      </md-button>
+    </div>
+  </form>
+  <!--/dhForm-->
+
+</div>

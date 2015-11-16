@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<div layout-padding layout-fill>
+  <!--Edit Table Info-->
+  <form name="editTable" ng-if="!vm.viewFieldsFlag" class="dhForm" novalidation>
+    <div class="formHead">
+      Edit {{vm.editTable.label}}
+    </div>
+    <div layout="column" layout-padding>
+      <md-input-container>
+        <label>ID</label>
+        <input ng-model="vm.editTable.id" aria-label="Edit Table ID" required>
+        <div ng-show="editTable.id.$invalid" ng-messages="editTable.id.$error">
+          <div ng-message="required">ID field is required</div>
+        </div>
+      </md-input-container>
+      <md-input-container>
+        <label>Label</label>
+        <input ng-model="vm.editTable.label" aria-label="Edit Table Label" required>
+      </md-input-container>
+      <div layout="row" layout-align="center center">
+        <div layout="column" layout-align="center center" flex>
+          <md-switch ng-model="vm.editTable.active" aria-label="Edit Table Activation" layout="column">Activation</md-switch>
+        </div>
+        <div layout="column" layout-align="center center" flex>
+          <md-icon ng-click="vm.remove()" md-font-library="material-icons" class="dhRed">delete</md-icon>
+          <span ng-click="vm.remove()">Delete</span>
+        </div>
+        <div layout="row" layout-align="center center" flex>
+          <span ng-if="vm.tables[vm.tables.exists(vm.table)].order!==0" ng-click="vm.tables.moveUp(vm.table)">
+            <md-icon md-font-library="material-icons">arrow_drop_up</md-icon>
+            Move Up
+          </span>
+          <span ng-if="vm.tables[vm.tables.exists(vm.table)].order<=0" class="dhDisabled">
+            <md-icon md-font-library="material-icons">arrow_drop_up</md-icon>
+            Move Up
+          </span>
+          <span ng-if="vm.tables[vm.tables.exists(vm.table)].order<vm.tables.count()-1" ng-click="vm.tables.moveDown(vm.table)">
+            <md-icon md-font-library="material-icons">arrow_drop_down</md-icon>
+            Move Down
+          </span>
+          <span ng-if="vm.tables[vm.tables.exists(vm.table)].order>=vm.tables.count()-1" class="dhDisabled">
+            <md-icon md-font-library="material-icons">arrow_drop_down</md-icon>
+            Move Down
+          </span>
+        </div>
+      </div>
+
+    </div>
+    <div layout="row">
+      <div layout="column" flex>
+        <md-button ng-click="vm.update()" ng-disabled="editTable.$invalid" class="md-primary center" aria-label="Submit New Table">
+          <md-icon md-font-library="material-icons">done</md-icon>
+          <div>Submit Changes</div>
+        </md-button>
+      </div>
+      <div layout="column" flex>
+        <md-button ng-click="vm.cancel()" ng-disabled="editTable.$invalid" class="md-primary center" aria-label="Submit New Table">
+          <md-icon md-font-library="material-icons">cancel</md-icon>
+          <div>Cancel Changes</div>
+        </md-button>
+      </div>
+    </div>
+  </form>
+
+  <div class="gap"></div>
+
+  <div layout="column">
+    <md-button ng-if="!vm.viewFieldsFlag" ng-click="vm.viewFieldsFlag=!vm.viewFieldsFlag" aria-label="View Fields in Table">View Fields in Table</md-button>
+    <md-button ng-if="vm.viewFieldsFlag" ng-click="vm.viewFieldsFlag=!vm.viewFieldsFlag" aria-label="Hide Fields in Table">Hide Fields in Table</md-button>
+  </div>
+
+  <div class="gap"></div>
+
+  <div ng-if="vm.viewFieldsFlag">
+    <md-toolbar class="dhToolbar">
+      <div class="header2" layout-padding>
+        Fields in '{{vm.editTable.label}}'
+      </div>
+    </md-toolbar>
+    <dh-field-add table="vm.table" schema="vm.schema"></dh-field-add>
+    <md-tabs md-dynamic-height md-border-bottom md-center-tabs flex>
+      <md-tab ng-repeat="field in vm.fields  | orderObjectBy:'order'" label="{{field.label}}">
+        <dh-field-edit table="vm.table" field="field.id" schema="vm.schema"></dh-field-edit>
+      </md-tab>
+    </md-tabs>
+  </div>
+</div>

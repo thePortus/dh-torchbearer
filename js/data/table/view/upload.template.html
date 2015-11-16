@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<div>
+  <div class="lightLabel center">
+    Upload CSV
+  </div>
+  <div layout="row" layout-align="center center" layout-padding>
+    <form>
+     <ng-csv-import content="vm.inputCSV.content" result="vm.inputCSV.result"></ng-csv-import>
+    </form>
+    <md-button ng-click="vm.addCSV(vm.inputCSV.content)" aria-label="Veryify and Add CSV Entries Button">
+      <md-icon md-font-library="material-icons" class="dhGreen">add_circle</md-icon>
+      Add New Entries
+    </md-button>
+  </div>
+  <div ng-if="!vm.validCSV && vm.checkedCSV" layout-padding>
+    <md-divider></md-divider>
+    <md-list>
+      <md-subheader class="md-no-sticky dhRed">Error(s) uploading CSV</md-subheader>
+      <md-list-item class="md-3-line" ng-repeat="error in vm.errors">
+        <div class="md-list-item-text">
+          <h3>{{ error.type }}</h3>
+          <p>{{ error.details }}</p>
+        </div>
+      </md-list-item>
+    </md-list>
+  </div>
+</div>

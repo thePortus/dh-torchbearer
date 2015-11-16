@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<div>
+  <div class="lightLabel">
+    Create New User
+  </div>
+  <div layout-padding>
+    <md-input-container>
+      <label>Email</label>
+      <input type="email" ng-model="vm.newUser.email" aria-label="Create User Email Input">
+    </md-input-container>
+    <md-input-container>
+      <label>Password</label>
+      <input type="password" ng-model="vm.newUser.password" aria-label="Create User Password Input">
+    </md-input-container>
+    <md-input-container>
+      <label>Confirm Password</label>
+      <input type="password" ng-model="vm.newUser.confirmPassword" aria-label="Create User Confirm Password Input">
+    </md-input-container>
+    <div>
+      <div ng-repeat="error in vm.errors" class="dhRed">
+        {{error}}
+      </div>
+    </div>
+    <div layout="row" layout-align="center center">
+      <md-button ng-click="vm.create()">
+        <md-icon md-font-library="material-icons" class="dhGreen">done</md-icon>
+        <span>Create New User</span>
+      </md-button>
+    </div>
+  </div>
+</div>

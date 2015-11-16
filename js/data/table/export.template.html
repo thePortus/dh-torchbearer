@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<div layout="row">
+  <div layout="column" flex>
+    <md-button ng-click="vm.generate()">
+      <md-icon md-font-set="material-icons" class="dhYellow">insert_chart</md-icon>
+      Generate CSV for export
+    </md-button>
+  </div>
+  <div layout="column" flex>
+    <md-button ng-href="{{vm.csvExport.url}}" download="{{vm.tableid}}.csv" target="_blank" ng-disabled="vm.ready===false">
+      <md-icon md-font-set="material-icons" class="dhGreen">save</md-icon>
+      Download File
+    </md-button>
+  </div>
+</div>

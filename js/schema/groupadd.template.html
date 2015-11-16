@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<div layout-padding layout-fill>
+
+  <div layout="column">
+    <md-button ng-if="!vm.addFlag" ng-click="vm.addFlag=!vm.addFlag">
+      <md-icon md-font-library="material-icons">add_circle</md-icon>
+      Add Option Group
+    </md-button>
+    <md-button ng-if="vm.addFlag" ng-click="vm.addFlag=!vm.addFlag">
+      <md-icon md-font-library="material-icons">cancel</md-icon>
+      Cancel Add Field
+    </md-button>
+  </div>
+
+  <div class="gap"></div>
+
+  <form ng-if="vm.addFlag" name="addOptionGroup" class="dhForm">
+    <div class="formHead">
+      Add a New Option Group
+    </div>
+    <div layout="column" layout-padding>
+      <md-input-container>
+        <label>ID</label>
+        <input ng-model="vm.newGroup.id" aria-label="New Group ID" required>
+      </md-input-container>
+      <md-input-container>
+        <label>Label</label>
+        <input ng-model="vm.newGroup.label" aria-label="New Group Label" required>
+      </md-input-container>
+      <md-button type="submit" value="submit" ng-click="vm.create()" class="md-raised md-primary center" aria-label="Submit New Option Group">
+        Create
+      </md-button>
+    </div>
+  </form>
+  <!--/dhForm-->
+
+</div>

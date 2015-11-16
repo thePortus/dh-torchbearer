@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<div layout="column" layout-fill>
+  <md-toolbar class="dhToolbar">
+    <div class="header1" layout-padding>
+      <span>Project Info</span>
+    </div>
+  </md-toolbar>
+  <div layout="column">
+    <dh-project-info-titles role="vm.role" titles="vm.projectInfo.titles"></dh-project-info-titles>
+    <dh-project-info-about role="vm.role" about="vm.projectInfo.about"></dh-project-info-about>
+    <dh-project-info-credits role="vm.role" credits="vm.projectInfo.credits"></dh-project-info-credits>
+  </div>
+  <div ng-if="vm.mode=='Setup Project'" layout="column">
+    <md-button ng-click="vm.establish()" flex>
+      <md-icon md-font-library="material-icons" class="dhGreen">done</md-icon>
+      Finish Project Setup
+    </md-button>
+  </div>
+</div>

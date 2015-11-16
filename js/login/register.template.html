@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<div layout="column">
+  <div ng-if="vm.mode!='Setup Master'" class="lightLabel">Enter new account information...</div>
+  <div ng-if="vm.mode=='Setup Master'" class="lightLabel">Enter master account information...</div>
+  <div layout-padding>
+    <md-input-container>
+      <label>Email</label>
+      <input type="email" ng-model="vm.email" aria-label="Login email input">
+    </md-input-container>
+    <md-input-container>
+      <label>Password</label>
+      <input type="password" ng-model="vm.password" aria-label="Login password input">
+    </md-input-container>
+        <md-input-container>
+      <label>Confirm Password</label>
+      <input type="password" ng-model="vm.passwordConfirm" aria-label="Login password confirmation input">
+    </md-input-container>
+    <div layout="row">
+      <md-button ng-if="vm.mode!='Setup Master'" ng-click="vm.mode='Sign In'" flex>
+        <md-icon md-font-library="material-icons" class="dhRed">cancel</md-icon>
+        Cancel
+      </md-button>
+            <md-button ng-click="vm.register()" flex>
+        <md-icon md-font-library="material-icons" class="dhGreen">person_add</md-icon>
+        Register
+      </md-button>
+    </div>
+  </div>
+</div>

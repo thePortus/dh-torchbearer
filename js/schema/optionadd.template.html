@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+  <div layout="column">
+    <md-button ng-if="!vm.addFlag" ng-click="vm.addFlag=!vm.addFlag">
+      <md-icon md-font-library="material-icons">add_circle</md-icon>
+      Add Option
+    </md-button>
+    <md-button ng-if="vm.addFlag" ng-click="vm.addFlag=!vm.addFlag">
+      <md-icon md-font-library="material-icons">cancel</md-icon>
+      Cancel Add Option
+    </md-button>
+  </div>
+
+  <div class="gap"></div>
+  
+<form ng-if="vm.addFlag" name="optionAdd" class="dhForm" novalidate>
+  <div class="formHead">
+    Add New Option
+  </div>
+  <div layout-column layout-padding>
+    <md-input-container>
+      <label>ID</label>
+      <input type="text" ng-model="vm.newOption.id" aria-label="Edit Option ID" required>
+      <div ng-show="optionAdd.id.$invalid" ng-messages="optionAdd.id.$error">
+        <div ng-message="required">ID field is required</div>
+      </div>
+    </md-input-container>
+    <md-input-container>
+      <label>Label</label>
+      <input type="text" ng-model="vm.newOption.label" aria-label="Edit Option Label" required>
+    </md-input-container>
+    <div layout="row" layout-align="center center">
+      <md-button ng-click="vm.create()" class="md-primary center" aria-label="Create New Field Button">
+        <md-icon md-font-library="material-icons">done</md-icon>
+        Create Option
+      </md-button>
+    </div>
+  </div>
+</form>

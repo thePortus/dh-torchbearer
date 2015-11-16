@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<div layout="column">
+  <div class="lightLabel">
+    Credits:
+  </div>
+  <div ng-if="vm.editFlag===false" layout="column" layout-padding>
+    <div ng-repeat="credit in vm.credits" class="dhTextBox">
+      <span ng-if="credit.title" class="dhLabel">
+        {{credit.title}}
+      </span>
+      <div class="dhContent">
+        {{credit.content}}
+      </div>
+    </div>
+  </div>
+  <div>
+    <div ng-if="vm.editFlag===true" layout="column" layout-padding>
+      <div ng-repeat="credit in vm.credits" layout="column">
+        <md-input-container>
+          <input type="text" ng-model="credit.title" aria-label="Credit Title Input">
+        </md-input-container>
+        <md-input-container>
+          <input type="text" ng-model="credit.content" aria-label="Credit Content Input">
+        </md-input-container>
+      </div>
+      <div layout="column">
+        <md-button ng-if="vm.addFlag===false" ng-click="vm.addFlag=!vm.addFlag">
+          <md-icon md-font-library="material-icons" class="dhGreen">add_circle</md-icon>
+          Add New Credit
+        </md-button>
+      </div>
+      <div ng-if="vm.addFlag" layout="column">
+        <div>
+          <md-input-container>
+            <input type="text" ng-model="vm.addCredit.title" placeholder="Enter (optional) credit title" aria-label="Credit Title Input">
+          </md-input-container>
+          <md-input-container>
+            <textarea ng-model="vm.addCredit.content" placeholder="Enter credit content" aria-label="Credit Title Input"></textarea>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <md-button ng-click="vm.add()" flex>
+            <md-icon md-font-library="material-icons" class="dhGreen">add_circle</md-icon>
+            Create Credit
+          </md-button>
+          <md-button ng-click="vm.addFlag=!vm.addFlag" flex>
+            <md-icon md-font-library="material-icons" class="dhRed">cancel</md-icon>
+            Cancel Credit
+          </md-button>
+        </div>
+      </div>
+      <div layout="row">
+        <md-button ng-click="vm.update()" flex>
+          <md-icon md-font-library="material-icons" class="dhGreen">done</md-icon>
+          Update Credits
+        </md-button>
+        <md-button ng-click="vm.editFlag=!vm.editFlag" flex>
+          <md-icon md-font-library="material-icons" class="dhRed">cancel</md-icon>
+          Cancel Update
+        </md-button>
+      </div>
+    </div>
+  </div>
+  <div ng-if="vm.role=='Master' && !vm.editFlag" layout="column">
+    <md-button ng-click="vm.editFlag=!vm.editFlag">
+      <md-icon md-font-library="material-icons" class="dhGreen">edit</md-icon>
+      Edit Credits
+    </md-button>
+  </div>
+</div>

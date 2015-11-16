@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<div layout-padding layout-fill>
+  <form name="editOption" class="dhForm" novalidate>
+    <div class="formHead">
+      Edit {{vm.editOption.label}}
+    </div>
+    <div layout-column layout-padding>
+      <label>
+        Option Identification
+      </label>
+      <div>
+      <md-input-container>
+        <label>ID</label>
+        <input type="text" ng-model="vm.editOption.id" aria-label="Edit Option ID" required>
+        <div ng-show="editOption.id.$invalid" ng-messages="editOption.id.$error">
+          <div ng-message="required">ID field is required</div>
+        </div>
+      </md-input-container>
+      <md-input-container>
+        <label>Label</label>
+        <input type="text" ng-model="vm.editOption.label" aria-label="Edit Option Label" required>
+      </md-input-container>
+     
+      </div>
+      <md-divider></md-divider>
+      <label>
+        Move/Delete Option
+      </label>
+      <div layout="row" layout-align="center center">
+        <div layout="column" layout-align="center center" flex>
+          <md-icon ng-click="vm.remove()" md-font-library="material-icons" class="dhRed">delete</md-icon>
+          <span ng-click="vm.remove()">Delete</span>
+        </div>
+        <div layout="row" layout-align="center center" flex>
+          <span ng-if="vm.options[vm.options.exists(vm.option)].order>0" ng-click="vm.options.moveUp(vm.option)">
+            <md-icon md-font-library="material-icons">arrow_drop_up</md-icon>
+            Move Up
+          </span>
+          <span ng-if="vm.options[vm.options.exists(vm.option)].order<=0" class="dhDisabled">
+            <md-icon md-font-library="material-icons">arrow_drop_up</md-icon>
+            Move Up
+          </span>
+          <span ng-if="vm.options[vm.options.exists(vm.option)].order<vm.options.count()-1" ng-click="vm.options.moveDown(vm.option)">
+            <md-icon md-font-library="material-icons">arrow_drop_down</md-icon>
+            Move Down
+          </span>
+          <span ng-if="vm.options[vm.options.exists(vm.option)].order>=vm.options.count()-1" class="dhDisabled">
+            <md-icon md-font-library="material-icons">arrow_drop_down</md-icon>
+            Move Down
+          </span>
+        </div>
+      </div>
+      <div layout="row">
+        <div layout="column" layout-align="center center" flex>
+          <md-button ng-click="vm.update()" ng-disabled="editOption.$invalid" class="md-primary center" aria-label="Submit Option Changes">
+            <md-icon md-font-library="material-icons">done</md-icon>
+            <div>Submit Changes</div>
+          </md-button>
+        </div>
+        <div layout="column" layout-align="center center" flex>
+          <md-button ng-click="vm.cancel()" ng-disabled="editOption.$invalid" class="md-primary center" aria-label="Cancel Option Changes">
+            <md-icon md-font-library="material-icons">cancel</md-icon>
+            <div>Cancel Changes</div>
+          </md-button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<div layout="column" layout-fill>
+  <md-toolbar class="dhToolbar">
+    <div class="header1" layout-padding>
+      Users
+    </div>
+  </md-toolbar>
+  <dh-user-list users="vm.users" ref="vm.ref" role="vm.role"></dh-user-list>
+  <dh-user-edit ng-if="vm.users.selected" users="vm.users" role="vm.role"></dh-user-edit>
+  <md-icon ng-if="!vm.addflag" ng-click="vm.addflag=!vm.addflag" md-font-library="material-icons" class="dhGreen">add_circle</md-icon>
+  <md-icon ng-if="vm.addflag" ng-click="vm.addflag=!vm.addflag" md-font-library="material-icons" class="dhRed">cancel</md-icon>
+  <dh-user-create ng-if="vm.addflag" users="vm.users" addflag="vm.addflag"></dh-user-create>
+</div>

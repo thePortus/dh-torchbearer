@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<div layout="row" layout-align="center center">
+  <div layout-padding>
+    Show
+  </div>
+  <md-select ng-model="vm.numResults" aria-label="Select Items Per Page" ng-change="vm.tabledata.itemsPerPage(vm.numResults)">
+    <md-option ng-repeat="opt in vm.options" ng-value="opt">{{opt}}</md-option>
+  </md-select>
+  <div layout-padding>
+    Entries
+  </div>
+  <div layout="row" layout-align="start start" layout-padding>
+    ( pg. {{vm.tabledata.pageCurrent() + 1}} of {{vm.tabledata.pageCount()}} )
+  </div>
+</div>

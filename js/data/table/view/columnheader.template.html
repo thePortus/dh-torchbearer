@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<div layout="row" layout-align="center center">
+  <div class="colLabel" ng-click="vm.sort(vm.field.id)" flex>
+    {{vm.field.label}}
+  </div>
+  <div ng-if="vm.sorting.field==vm.field.id && vm.sorting.reverse===false" ng-click="vm.sort(vm.field.id)">
+    <md-icon md-font-library="material-icons">arrow_drop_down</md-icon>
+  </div>
+  <div ng-if="vm.sorting.field==vm.field.id && vm.sorting.reverse===true" ng-click="vm.sort(vm.field.id)">
+    <md-icon md-font-library="material-icons">arrow_drop_up</md-icon>
+  </div>
+  <div ng-if="!vm.field.primaryKey && !vm.hiddenfields[vm.field.id]">
+    <md-icon ng-click="vm.toggle(vm.field.id)" md-font-set="material-icons" class="colBtn">visibility_off</md-icon>
+  </div>
+</div>

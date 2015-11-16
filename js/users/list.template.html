@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<div layout="column" layout-align="center center">
+  <table>
+    <tbody>
+      <tr ng-repeat="user in vm.users">
+        <td layout-padding>
+          {{user.email}}
+        </td>
+        <td>
+          <md-select ng-disabled="user.email==vm.dbInfo.masterAdmin" ng-model="user.role" aria-label="Edit User Role Select Input" ng-change="vm.update(user)" layout-padding>
+            <md-option value='User'>User</md-option>
+            <md-option value='Editor'>Editor</md-option>
+            <md-option ng-if="vm.role=='Master'" value='Admin'>Admin</md-option>
+            <md-option ng-if="vm.role=='Master'" value='Master'>Master</md-option>
+          </md-select>
+        </td>
+        <td>
+          <div ng-if="vm.role=='Master' || vm.role=='Admin'" layout="row" layout-align="center center" layout-padding>
+            <md-icon ng-if="user.role!='Master'" ng-click="vm.remove(user)" md-font-library="material-icons" class="dhRed">delete</md-icon>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

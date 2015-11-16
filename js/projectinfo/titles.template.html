@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<div layout="column">
+  <div class="lightLabel">
+    Title Information:
+  </div>
+  <div layout="column" layout-padding>
+    <md-input-container>
+      <input type="text" ng-model="vm.title" placeholder="Title" aria-label="Main Title Text Input" ng-disabled="!vm.editFlag">
+    </md-input-container>
+    <md-input-container>
+      <input type="text" ng-model="vm.subTitle" placeholder="Subtitle" aria-label="Subtitle Text Input" ng-disabled="!vm.editFlag">
+    </md-input-container>
+    <div layout="row" ng-if="vm.editFlag">
+      <md-button ng-click="vm.update()" flex>
+        <md-icon md-font-library="material-icons" class="dhGreen">done</md-icon>
+        Update Titles
+      </md-button>
+      <md-button ng-click="vm.editFlag=!vm.editFlag" flex>
+        <md-icon md-font-library="material-icons" class="dhRed">cancel</md-icon>
+        Cancel
+      </md-button>
+    </div>
+  </div>
+  <div ng-if="vm.role=='Master' && !vm.editFlag" layout="column">
+    <md-button ng-click="vm.editFlag=!vm.editFlag">
+      <md-icon md-font-library="material-icons" class="dhGreen">edit</md-icon>
+      Edit Title Information
+    </md-button>
+  </div>
+</div>

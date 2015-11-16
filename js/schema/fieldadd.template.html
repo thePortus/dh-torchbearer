@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<div layout-padding layout-fill>
+  <div layout="column">
+    <md-button ng-if="!vm.addFlag" ng-click="vm.addFlag=!vm.addFlag">
+      <md-icon md-font-library="material-icons">add_circle</md-icon>
+      Add Field
+    </md-button>
+    <md-button ng-if="vm.addFlag" ng-click="vm.addFlag=!vm.addFlag">
+      <md-icon md-font-library="material-icons">cancel</md-icon>
+      Cancel Add Field
+    </md-button>
+  </div>
+
+  <div class="gap"></div>
+
+  <form name="addField" ng-if="vm.addFlag" class="dhForm">
+    <div class="formHead">
+      Add Field
+    </div>
+    <div layout-column layout-padding>
+      <label>
+        Field Identification
+      </label>
+      <md-input-container>
+        <label>ID</label>
+        <input type="text" ng-model="vm.newField.id" aria-label="Edit Field ID" required>
+      </md-input-container>
+      <md-input-container>
+        <label>Label</label>
+        <input type="text" ng-model="vm.newField.label" aria-label="Edit Field Label" required>
+      </md-input-container>
+      <md-divider></md-divider>
+      <label>
+        Key/Required:
+      </label>
+      <div layout="row" layout-align="center center">
+        <div layout="column" layout-align="center center" flex>
+          <md-switch ng-model="vm.newField.primaryKey" aria-label="Make Primary Key Toggle" layout="column">
+            Make field (part of) the primary key
+          </md-switch>
+        </div>
+        <div layout="column" layout-align="center center" flex>
+          <md-switch ng-model="vm.newField.required" aria-label="Require Field Toggle" layout="column">
+            Make field required
+          </md-switch>
+        </div>
+      </div>
+      <md-divider></md-divider>
+      <label>
+        Type of Field:
+      </label>
+      <div layout="row" layout-align="center center">
+        <div layout="row" layout-align="center center" flex>
+          <div class="gap">
+            Input Type:
+          </div>
+          <md-select ng-model="vm.newField.inputType" class="gap" placeholder="Select input type" aria-label="Input Type Selection" required>
+            <md-option ng-repeat="type in vm.inputTypes" ng-value="type.id">
+              {{type.label}}
+            </md-option>
+          </md-select>
+        </div>
+        <div layout="column" layout-align="center center" flex>
+          <div ng-if="vm.newField.inputType=='input'" layout="row" layout-align="center center">
+            <div class="gap">
+              Data Type:
+            </div>
+            <md-select name="dataType" ng-model="vm.newField.dataType" class="gap" placeholder="Select data type" aria-label="Data Type Selection" required>
+              <md-option ng-repeat="type in vm.dataTypes" ng-value="type.id">
+                {{type.label}}
+              </md-option>
+            </md-select>
+          </div>
+        </div>
+        <div ng-if="vm.newField.inputType=='select' || vm.newField.inputType=='checkbox'" layout="row" layout-align="center center">
+          <div>
+            Choose Option Group:
+          </div>
+          <md-select ng-model="vm.newField.options" placeholder="Select Option Group" aria-label="Option Group Selection" required>
+            <md-option ng-repeat="group in vm.optionGroups" ng-value="group.id">
+              {{group.label}}
+            </md-option>
+          </md-select>
+        </div>
+      </div>
+      <md-divider></md-divider>
+      <label>
+        Auxiliary Text
+      </label>
+      <div layout="row">
+        <md-input-container flex>
+          <label>
+            Field placeholder
+          </label>
+          <input type="text" ng-model="vm.newField.placeholder" aria-label="Field placeholder input">
+        </md-input-container>
+        <md-input-container flex>
+          <label>
+            Field help text
+          </label>
+          <input type="text" ng-model="vm.newField.helpText" aria-label="Field help text input">
+        </md-input-container>
+      </div>
+      <div layout="row" layout-align="center center">
+        <md-button ng-click="vm.create()" class="md-primary center" aria-label="Create New Field Button">
+          <md-icon md-font-library="material-icons">done</md-icon>
+          Create Field
+        </md-button>
+      </div>
+    </div>
+  </form>
+</div>

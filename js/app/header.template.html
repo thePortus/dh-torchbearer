@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<md-toolbar class="md-hue-2 dhHeader" layout="row">
+  <!--Entitlature-->
+  <div flex>
+    <!--Titles-->
+    <div layout-padding>
+      <!--Main Title-->
+      <span class="mainTitle">
+        {{vm.projectInfo.titles.title}}
+      </span>
+      <span class="subTitle">
+        {{vm.projectInfo.titles.subTitle}}
+      </span>
+    </div>
+    <!--Credits-->
+    <div class="credits" layout-padding>
+      <small>Powered by {{vm.appTitle}} v{{vm.appVersion}}. {{vm.appCredits}}, {{vm.appRights}}</small>
+    </div>
+  </div>
+  <!-- Nav Section -->
+  <div class="mainNav" layout="column" layout-align="center center" layout-padding>
+    <div ng-if="vm.auth.loggedIn" layout="column" layout-align="center center">
+      <md-menu>
+        <md-button ng-click="$mdOpenMenu()" aria-label="Open Nav Menu Button">
+          <md-icon md-font-library="material-icons">menu</md-icon>
+        </md-button>
+        <md-menu-content width="2">
+          <md-menu-item>
+            <md-button ng-click="vm.change('home')" aria-label="Nav Menu Home Button">
+              <md-icon md-font-library="material-icons">home</md-icon>
+              Home
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-click="vm.change('data')" aria-label="Nav Menu Data Tables Button">
+              <md-icon md-font-library="material-icons">edit</md-icon>
+              Data Tables
+            </md-button>
+          </md-menu-item>
+          <md-menu-item ng-if="vm.role=='Master'">
+            <md-button ng-click="vm.change('schema')" aria-label="Nav Menu Schema Button">
+              <md-icon md-font-library="material-icons">developer_board</md-icon>
+              Project Schema
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-click="vm.change('projectinfo')" aria-label="Nav Menu Project Info Button">
+              <md-icon md-font-library="material-icons">info</md-icon>
+              Project Info
+            </md-button>
+          </md-menu-item>
+          <md-menu-item ng-if="vm.role=='Master' || vm.role=='Admin'">
+            <md-button ng-click="vm.change('users')" aria-label="Nav Menu User Control Panel Button">
+              <md-icon md-font-library="material-icons">group</md-icon>
+              Users Control Panel
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-click="vm.logout()" aria-label="Nav Menu Log Out Button">
+              <md-icon md-font-library="material-icons">exit_to_app</md-icon>
+              Log Off
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </div>
+  </div>
+</md-toolbar>

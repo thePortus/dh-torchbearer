@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<div>
+  
+  <!--Add/Edit Entry and Upload CSV Toggles-->
+  <div layout="row" layout-align="center center" layout-padding>
+    <md-button ng-click="vm.add()" ng-if="vm.entryMode===false" flex>
+      <md-icon md-font-library="material-icons" class="dhGreen">add_circle</md-icon>
+      Add New Entry
+    </md-button>
+    <md-button ng-if="(vm.role=='Master' || 'Admin') && vm.uploadFlag===false" ng-click="vm.uploadFlag=!vm.uploadFlag" flex>
+      <md-icon md-font-library="material-icons" class="dhGreen">add_circle_outline</md-icon>
+      Upload CSV
+    </md-button>
+    <md-button ng-if="(vm.role=='Master' || 'Admin') && vm.uploadFlag===true" ng-click="vm.uploadFlag=!vm.uploadFlag" flex>
+      <md-icon md-font-library="material-icons" class="dhRed">cancel</md-icon>
+      Cancel Upload
+    </md-button>
+  </div>
+  
+  <!--Add/Edit Entry and Upload CSV Directive Elements-->
+  <dh-table-entry tableid="vm.tableid" mode="vm.entryMode" options="vm.options" optiongroups="vm.optiongroups" fields="vm.fields" tabledata="vm.tabledata" entry="vm.entry"></dh-table-entry>
+  <dh-table-upload ng-if="vm.uploadFlag" fields="vm.fields" tabledata="vm.tabledata"></dh-table-upload>
+
+  <!--Data Table-->
+  <div class="dhTable">
+    <div class="tHead">
+      <div class="tRow">
+        <div ng-if="vm.role=='Master' || vm.role=='Admin' || vm.role=='Editor'" class="tCell">
+          <div class="colLabel" layout="column">
+            Actions
+          </div>
+        </div>
+        <div class="tCell" ng-repeat="field in vm.fields | orderObjectBy:'order'" ng-if="!vm.hiddenfields[field.id]">
+          <dh-table-column-header field="field" sorting="vm.sorting" hiddenfields="vm.hiddenfields"></dh-table-column-header>
+        </div>
+        <!--tCell close-->
+      </div>
+      <!--tRow close-->
+    </div>
+    <!--tHead close-->
+
+    <div class="tBody">
+      <div class="tRow" ng-repeat="entry in vm.tabledata.page() | filter:vm.searchterm | orderObjectBy:vm.sorting.field: vm.sorting.reverse">
+        <div ng-if="vm.role=='Master' || vm.role=='Admin' || vm.role=='Editor'" class="tCell">
+          <md-icon ng-click="vm.edit(entry)" md-font-library="material-icons" class="dhGreen">edit</md-icon>
+          <md-icon ng-click="vm.remove(entry)" md-font-library="material-icons" class="dhRed">delete</md-icon>
+        </div>
+        <!--entry actions tCell close-->
+        <div class="tCell" ng-repeat="field in vm.fields | orderObjectBy:'order'" ng-if="!vm.hiddenfields[field.id]">
+          <span class="colLabel">
+          {{entry[field.id]}}
+        </span>
+        </div>
+        <!--tCell close-->
+      </div>
+      <!--tRow close-->
+    </div>
+    <!--tBody close-->
+
+    <div class="tFoot">
+      <div class="tRow">
+        <div ng-if="vm.role=='Master' || vm.role=='Admin' || vm.role=='Editor'" class="tCell">
+          <div class="colLabel" layout="column">
+            Actions
+          </div>
+        </div>
+        <div class="tCell" ng-repeat="field in vm.fields | orderObjectBy:'order'" ng-if="!vm.hiddenfields[field.id]">
+          <dh-table-column-header field="field" sorting="vm.sorting" hiddenfields="vm.hiddenfields"></dh-table-column-header>
+        </div>
+        <!--tCell close-->
+      </div>
+      <!--tRow close-->
+    </div>
+    <!--tFoot close-->
+  </div>
+  <!--dhTable close-->
+
+</div>
+<!--view container element close-->

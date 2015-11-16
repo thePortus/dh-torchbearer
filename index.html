@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html ng-app="dhtorchbearer.app">
+
+<head>
+  <!--Header Info-->
+  <meta charset="utf-8" />
+  <title>DH Torchbearer Dashboard</title>
+  <script>
+    document.write('<base href="' + document.location + '" />');
+  </script>
+  <!--External Dependencies -->
+  <!--CSS-->
+  <link rel="stylesheet" href="css/external/angular-material-min.css" />
+  <!--JS-->
+  <script src="js/external/angular/angular.min.js"></script>
+  <script src="js/external/angular/angular-animate.min.js"></script>
+  <script src="js/external/angular/angular-aria.min.js"></script>
+  <script src="js/external/angular/angular-touch.min.js"></script>
+  <script src="js/external/ui-router.js"></script>
+  <script src="js/external/angular-material.min.js"></script>
+  <script src="js/external/firebase/firebase.min.js"></script>
+  <script src="js/external/firebase/angularfire.min.js"></script>
+  <script src="js/external/angular-csv-import.min.js"></script>
+
+  <body ng-controller="AppCtrl as vm">
+    <div ng-if="vm.loading===false">
+      <dh-app-header role="vm.auth.user.role"></dh-app-header>
+      <div ui-view></div>
+    </div>
+    <div ng-if="vm.loading===true" layout="column" layout-align="center center" class="dhLoading" layout-fill>
+      Loading...
+    </div>
+
+    <!-- ===========INTERNAL DEPENDENCIES=========== -->
+    <!--CSS-->
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/tablesforms.css" />
+    <link rel="stylesheet" href="css/headerslabelsboxes.css" />
+    <!--JS-->
+    <!--App Module Definitions-->
+    <script src="js/app/app.config.js"></script>
+    <script src="editme.js"></script>
+    <script src="js/common/common.config.js"></script>
+    <script src="js/login/login.config.js"></script>
+    <script src="js/projectinfo/projectinfo.config.js"></script>
+    <script src="js/users/users.config.js"></script>
+    <script src="js/schema/schema.config.js"></script>
+    <script src="js/data/data.config.js"></script>
+    <!--Core Module-->
+    <script src="js/app/app.controller.js"></script>
+    <script src="js/app/home.controller.js"></script>
+    <script src="js/app/login.controller.js"></script>
+    <script src="js/app/setup.controller.js"></script>
+    <script src="js/app/projectinfo.controller.js"></script>
+    <script src="js/app/users.controller.js"></script>
+    <script src="js/app/schema.controller.js"></script>
+    <script src="js/app/data.controller.js"></script>
+    <script src="js/app/header.directive.js"></script>
+    <!--Common Module-->
+    <script src="js/common/db.factory.js"></script>
+    <script src="js/common/auth.factory.js"></script>
+    <script src="js/common/dbinfo.factory.js"></script>
+    <script src="js/common/projectinfo.factory.js"></script>
+    <script src="js/common/users.factory.js"></script>
+    <script src="js/common/logs.factory.js"></script>
+    <script src="js/common/ui.factory.js"></script>
+    <script src="js/common/toast.factory.js"></script>
+    <script src="js/common/dialog.factory.js"></script>
+    <!--Login Module-->
+    <script src="js/login/signin.directive.js"></script>
+    <script src="js/login/register.directive.js"></script>
+    <!--Project Info Module-->
+    <script src="js/projectinfo/about.directive.js"></script>
+    <script src="js/projectinfo/credits.directive.js"></script>
+    <script src="js/projectinfo/titles.directive.js"></script>
+    <script src="js/projectinfo/projectinfo.directive.js"></script>
+    <!--Users Module-->
+    <script src="js/users/create.directive.js"></script>
+    <script src="js/users/list.directive.js"></script>
+    <script src="js/users/users.directive.js"></script>
+    <!--Schema Module-->
+    <script src="js/schema/schema.factory.js"></script>
+    <script src="js/schema/tableadd.directive.js"></script>
+    <script src="js/schema/tableedit.directive.js"></script>
+    <script src="js/schema/fieldadd.directive.js"></script>
+    <script src="js/schema/fieldedit.directive.js"></script>
+    <script src="js/schema/groupadd.directive.js"></script>
+    <script src="js/schema/groupedit.directive.js"></script>
+    <script src="js/schema/optionadd.directive.js"></script>
+    <script src="js/schema/optionedit.directive.js"></script>
+    <script src="js/schema/schema.directive.js"></script>
+    <!--Data-->
+    <script src="js/data/data.directive.js"></script>
+    <script src="js/data/data.factory.js"></script>
+    <script src="js/data/fields.factory.js"></script>
+    <script src="js/data/table.factory.js"></script>
+    <script src="js/data/csvimport.factory.js"></script>
+    <script src="js/data/csvexport.factory.js"></script>
+    <script src="js/data/table/search.directive.js"></script>
+    <script src="js/data/table/nav.directive.js"></script>
+    <script src="js/data/table/pagination.directive.js"></script>
+    <script src="js/data/table/hiddenfields.directive.js"></script>
+    <script src="js/data/table/export.directive.js"></script>
+    <script src="js/data/table/view/columnheader.directive.js"></script>
+    <script src="js/data/table/view/view.directive.js"></script>
+    <script src="js/data/table/view/upload.directive.js"></script>
+    <script src="js/data/table/view/entry.directive.js"></script>
+    <script src="js/data/table/table.directive.js"></script>
+
+  </body>
+
+</html>

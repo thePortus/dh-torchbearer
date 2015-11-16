@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<div class="tableNav" layout="row" layout-align="center center">
+  <md-button ng-click="vm.changePage(0)" class="md-icon-button md-mini md-primary" aria-label="Go to First Page">
+    <md-icon md-font-set="material-icons">fast_rewind</md-icon>
+  </md-button>
+  <md-button ng-click="vm.changePage(vm.tabledata.pageCurrent()-1)" class="md-icon-button md-mini md-primary" aria-label="Go to Next Page">
+    <md-icon md-font-set="material-icons">navigate_before</md-icon>
+  </md-button>
+  <md-input-container>
+  <input type="numeric" ng-model="vm.pageInput" ng-change="vm.changePage(vm.pageInput)" class="smallInput"  aria-label="Change Page Input"/>
+</md-input-container>
+  <md-button ng-click="vm.changePage(vm.tabledata.pageCurrent()+1)" class="md-icon-button md-mini md-primary" aria-label="Go to Next Page">
+    <md-icon md-font-set="material-icons">navigate_next</md-icon>
+  </md-button>
+  <md-button ng-click="vm.changePage(vm.tabledata.pageCount()-1)" class="md-icon-button md-mini md-primary" aria-label="Go to Last Page">
+    <md-icon md-font-set="material-icons">fast_forward</md-icon>
+  </md-button>
+</div>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<div ng-if="vm.mode!==false" layout-padding>
+  <form name="entryForm" class="dhForm" layout="column" novalidate>
+    <div layout="column">
+      <div class="formHead">
+        <span ng-if="vm.mode=='add'">Add</span><span ng-if="vm.mode=='edit'">Edit</span> Entry
+      </div>
+      <div layout="column" layout-padding>
+        <div ng-repeat="field in vm.fields">
+          <!--Input Fields-->
+          <md-input-container ng-if="field.inputType=='input'">
+            <label>{{field.label}}</label>
+            <!--Text Input-->
+            <input type="text" ng-if="field.dataType=='text'" ng-model="vm.entry[field.id]" aria-label="Input for {{field.label}}" ng-required="field.required">
+            <!--Number Input-->
+            <input type="number" ng-if="field.dataType=='number'" ng-model="vm.entry[field.id]" aria-label="Input for {{field.label}}" ng-required="field.required">
+            <!--Email Input-->
+            <input type="email" ng-if="field.dataType=='email'" ng-model="vm.entry[field.id]" aria-label="Input for {{field.label}}" ng-required="field.required">
+            <!--URL Input-->
+            <input type="url" ng-if="field.dataType=='url'" ng-model="vm.entry[field.id]" aria-label="Input for {{field.label}}" ng-required="field.required">
+            <!--Date Input-->
+            <input type="date" ng-if="field.dataType=='date'" ng-model="vm.entry[field.id]" aria-label="Input for {{field.label}}" ng-required="field.required">
+          </md-input-container>
+          <!--Textarea Fields-->
+          <md-input-container ng-if="field.inputType=='textarea'">
+            <label>{{field.label}}</label>
+            <textarea ng-model="vm.entry[field.id]" aria-label="Textarea Input for {{field.label}}" ng-required="field.required"></textarea>
+          </md-input-container>
+          <!--Select Fields-->
+          <div ng-if="field.inputType=='select'" layout="row" layout-align="start center">
+            <div>
+              Select {{field.label}}:
+            </div>
+            <md-select ng-model="vm.entry[field.id]" aria-label="Select input for {{field.label}}">
+              <md-option ng-repeat="option in vm.fieldOptions[field.options] | orderObjectBy:'order'" ng-value="option.id" ng-required="field.required">{{option.label}}</md-option>
+            </md-select>
+          </div>
+          <!--Checkbox Fields-->
+          <div ng-if="field.inputType=='checkbox'">
+            <div class="dhFieldLabel" layout-padding>{{field.label}} Checkbox</div>
+            <div layout="row" layout-align="center center">
+              <div ng-repeat="option in vm.fieldOptions[field.options] | orderObjectBy:'order'" layout="column" layout-align="center center" layout-padding>
+                <md-checkbox ng-value="option.id" aria-label="Checkbox input for {field.label}}"></md-checkbox>
+                <div>{{option.label}}</div>
+              </div>
+            </div>
+          </div>
+          <!--Toggle Fields-->
+          <div ng-if="field.inputType=='toggle'" layout="row" layout-align="center center">
+            <md-switch ng-model="vm.entry[field.id]" aria-label="Toggle input for {{field.label}}"></md-switch>
+            <div>Toggle {{field.label}}</div>
+          </div>
+        </div>
+      </div>
+      <div ng-show="entryForm[field.id]" ng-messages="entryForm[field.id].$error">
+        <div ng-message="required">{{field.label}} is required</div>
+      </div>
+    </div>
+    <div layout="row" layout-align="center center" layout-padding>
+      <md-button ng-if="vm.mode=='add'" ng-click="vm.create()">
+        <md-icon md-font-library="material-icons" class="dhGreen">done</md-icon>
+        Create
+      </md-button>
+      <md-button ng-if="vm.mode=='edit'" ng-click="vm.edit()">
+        <md-icon md-font-library="material-icons" class="dhGreen">done</md-icon>
+        Update
+      </md-button>
+      <md-button ng-click="vm.cancel()">
+        <md-icon md-font-library="material-icons" class="dhRed">cancel</md-icon>
+        Cancel
+      </md-button>
+    </div>
+  </form>
+</div>

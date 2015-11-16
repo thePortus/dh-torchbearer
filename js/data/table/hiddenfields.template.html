@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<div layout="column">
+  <div layout="column" layout-align="center center" class="lightLabel" flex>
+    Hidden Fields (click to unhide)
+  </div>
+  <div layout="row" layout-padding layout-align="center center" flex>
+    <div ng-repeat="field in vm.fields" layout="column" layout-align="center center">
+      <md-checkbox ng-if="vm.hiddenfields[field.id]" ng-model="vm.hiddenfields[field.id]" ng-change="vm.toggleField(field.id)" aria-label="Unhide field {{field.label}} checkbox"></md-checkbox>
+      <span ng-if="vm.hiddenfields[field.id]">{{field.label}}</span>
+    </div>
+  </div>
+  <div layout="column" layout-align="center center" class="lightLabel" flex>
+    Hidden Fields (click to unhide)
+  </div>
+</div>

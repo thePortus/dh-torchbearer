@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<div layout="column">
+  <div class="lightLabel">Please log in...</div>
+  <div layout-padding>
+    <md-input-container>
+      <label>Email</label>
+      <input type="email" ng-model="vm.email" aria-label="Login email input">
+    </md-input-container>
+    <md-input-container>
+      <label>Password</label>
+      <input type="password" ng-model="vm.password" aria-label="Login password input">
+    </md-input-container>
+    <div layout="row">
+      <md-button ng-click="vm.mode='Register'" flex>
+        <md-icon md-font-library="material-icons" class="dhYellow">person_add</md-icon>
+        Create New Account
+      </md-button>
+      <md-button ng-click="vm.login()" flex>
+        <md-icon md-font-library="material-icons" class="dhGreen">person</md-icon>
+        Log In
+      </md-button>
+    </div>
+  </div>
+</div>

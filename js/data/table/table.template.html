@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<div>
+  <dh-table-search term="vm.searchterm"></dh-table-search>
+  <div layout="row" layout-align="center center" layout-padding>
+    <dh-table-nav tabledata="vm.tabledata" flex></dh-table-nav>
+    <dh-table-pagination tabledata="vm.tabledata" flex></dh-table-pagination>
+  </div>
+  <dh-table-hidden-fields ng-if="vm.checkForHidden()" hiddenfields="vm.hiddenfields" fields="vm.fields"></dh-table-hidden-fields>
+  <dh-table-view tableid="vm.tableid" fields="vm.fields" options="vm.options" optiongroups="vm.optiongroups" searchterm="vm.searchterm" hiddenfields="vm.hiddenfields" tabledata="vm.tabledata" role="vm.role"></dh-table-view>
+  <dh-table-hidden-fields ng-if="vm.checkForHidden()" hiddenfields="vm.hiddenfields" fields="vm.fields"></dh-table-hidden-fields>
+  <div layout="row" layout-align="center center" layout-padding>
+    <dh-table-nav tabledata="vm.tabledata" flex></dh-table-nav>
+    <dh-table-pagination tabledata="vm.tabledata" flex></dh-table-pagination>
+  </div>
+  <dh-table-export tableid="vm.tableid" fields="vm.fields" tabledata="vm.tabledata"></dh-table-export>
+</div>

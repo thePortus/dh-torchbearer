@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<div layout="column" layout-fill>
+  <md-toolbar class="dhToolbar">
+    <div class="header1" layout-padding>
+      <span ng-if="vm.role=='Master' || vm.role=='Admin' || vm.role=='Editor'">Edit</span>
+      <span ng-if="vm.role!='Master' && vm.role!='Admin' && vm.role!='Editor'">Browse</span>
+    </div>
+  </md-toolbar>
+  <md-tabs md-dynamic-height md-border-bottom md-center-tabs flex>
+    <md-tab ng-repeat="table in vm.tableList | activeTables | orderObjectBy:'order'" label="{{table.label}}">
+      <dh-table tableid="table.id" data="vm.data" role="vm.role"></dh-table>
+    </md-tab>
+  </md-tabs>
+</div>
